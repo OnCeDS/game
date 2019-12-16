@@ -83,9 +83,9 @@ int main()
     board();
     if (i == 1)
 
-        std::cout << "==>\aИгрок №" << --player << " победил! ";
+        std::cout << "\t==>\aИгрок №" << --player << " победил! ";
     else
-        std::cout << "==>\aНичья!";
+        std::cout << "\t==>\aНичья!";
 
     std::cin.ignore();
     std::cin.get();
