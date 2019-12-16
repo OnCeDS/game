@@ -45,7 +45,7 @@ int main()
         board();
         player = (player % 2) ? 1 : 2;
 
-        std::cout << "\tИгрок №" << player << ", ваш ход, укажите номер клетки:  ";
+        std::cout << "\tИгрок №" << player << " ваш ход! Укажите номер клетки:  ";
         std::cin >> pick;
 
         point = (player == 1) ? 'X' : 'O';
