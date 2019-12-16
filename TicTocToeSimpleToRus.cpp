@@ -1,14 +1,38 @@
 #include <iostream>
 
-using namespace std;
-
 char square[10] = { 'o','1','2','3','4','5','6','7','8','9' };
 
 int checkwin();
-void board();
+
+void board()
+{
+    system("cls");
+    std::cout << "\n\n\t\t>>>> КРЕСТИКИ-НОЛИКИ <<<<\n\n";
+
+    std::cout << "\t>> Игрок №1 - (X)  -  Игрок №2 - (O) <<" << std::endl << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "\t\t   _____ _____ _____    " << std::endl;
+    std::cout << "\t\t >|     |     |     |<  " << std::endl;
+    std::cout << "\t\t " << "<|  " << square[1] << "  |  " << square[2] << "  |  " << square[3] << "  |>  " << std::endl;
+
+    std::cout << "\t\t >|_____|_____|_____|<  " << std::endl;
+    std::cout << "\t\t <|     |     |     |>  " << std::endl;
+
+    std::cout << "\t\t " << ">|  " << square[4] << "  |  " << square[5] << "  |  " << square[6] << "  |<  " << std::endl;
+
+    std::cout << "\t\t <|_____|_____|_____|>  " << std::endl;
+    std::cout << "\t\t >|     |     |     |<  " << std::endl;
+
+    std::cout << "\t\t " << "<|  " << square[7] << "  |  " << square[8] << "  |  " << square[9] << "  |>  " << std::endl;
+
+    std::cout << "\t\t >|_____|_____|_____|<  " << std::endl << std::endl;
+    system("color F0");
+}
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     int player = 1, i, choice;
 
     char mark;
@@ -17,8 +41,8 @@ int main()
         board();
         player = (player % 2) ? 1 : 2;
 
-        cout << "Player " << player << ", enter a number:  ";
-        cin >> choice;
+        std::cout << "\tИгрок №" << player << ", ваш ход, укажите номер клетки:  ";
+        std::cin >> choice;
 
         mark = (player == 1) ? 'X' : 'O';
 
@@ -51,32 +75,33 @@ int main()
             square[9] = mark;
         else
         {
-            cout << "Invalid move ";
+            std::cout << "Такой клетки в игре не существует! ";
 
             player--;
-            cin.ignore();
-            cin.get();
+            std::cin.ignore();
+            std::cin.get();
         }
         i = checkwin();
 
         player++;
-    } while (i == -1);
+    } 
+    while (i == -1);
     board();
     if (i == 1)
 
-        cout << "==>\aPlayer " << --player << " win ";
+        std::cout << "==>\aИгрок №" << --player << " победил! ";
     else
-        cout << "==>\aGame draw";
+        std::cout << "==>\aНичья!";
 
-    cin.ignore();
-    cin.get();
+    std::cin.ignore();
+    std::cin.get();
     return 0;
 }
 
 int checkwin()
 {
     if (square[1] == square[2] && square[2] == square[3])
-
+   
         return 1;
     else if (square[4] == square[5] && square[5] == square[6])
 
@@ -106,28 +131,4 @@ int checkwin()
         return 0;
     else
         return -1;
-}
-
-void board()
-{
-    system("cls");
-    cout << "\n\n\tTic Tac Toe\n\n";
-
-    cout << "Player 1 (X)  -  Player 2 (O)" << endl << endl;
-    cout << endl;
-
-    cout << "     |     |     " << endl;
-    cout << "  " << square[1] << "  |  " << square[2] << "  |  " << square[3] << endl;
-
-    cout << "_____|_____|_____" << endl;
-    cout << "     |     |     " << endl;
-
-    cout << "  " << square[4] << "  |  " << square[5] << "  |  " << square[6] << endl;
-
-    cout << "_____|_____|_____" << endl;
-    cout << "     |     |     " << endl;
-
-    cout << "  " << square[7] << "  |  " << square[8] << "  |  " << square[9] << endl;
-
-    cout << "     |     |     " << endl << endl;
 }
