@@ -22,7 +22,8 @@ void board()
     std::cout << "\t\t >|     |     |     |<  " << std::endl;
     std::cout << "\t\t " << "<|  " << cell[7] << "  |  " << cell[8] << "  |  " << cell[9] << "  |>  " << std::endl;
     std::cout << "\t\t >|_____|_____|_____|<  " << std::endl << std::endl;
-    system("color F0");
+    system("color F9");
+    
 }
 
 int main()
