@@ -1,31 +1,26 @@
 #include <iostream>
 
-char square[10] = { 'o','1','2','3','4','5','6','7','8','9' };
-
-int checkwin();
+char cell[10] = 
+{ 
+    'o','1','2','3','4','5','6','7','8','9' 
+};
+int check();
 
 void board()
 {
     system("cls");
     std::cout << "\n\n\t\t>>>> КРЕСТИКИ-НОЛИКИ <<<<\n\n";
-
     std::cout << "\t>> Игрок №1 - (X)  -  Игрок №2 - (O) <<" << std::endl << std::endl;
     std::cout << std::endl;
-
     std::cout << "\t\t   _____ _____ _____    " << std::endl;
     std::cout << "\t\t >|     |     |     |<  " << std::endl;
-    std::cout << "\t\t " << "<|  " << square[1] << "  |  " << square[2] << "  |  " << square[3] << "  |>  " << std::endl;
-
+    std::cout << "\t\t " << "<|  " << cell[1] << "  |  " << cell[2] << "  |  " << cell[3] << "  |>  " << std::endl;
     std::cout << "\t\t >|_____|_____|_____|<  " << std::endl;
     std::cout << "\t\t <|     |     |     |>  " << std::endl;
-
-    std::cout << "\t\t " << ">|  " << square[4] << "  |  " << square[5] << "  |  " << square[6] << "  |<  " << std::endl;
-
+    std::cout << "\t\t " << ">|  " << cell[4] << "  |  " << cell[5] << "  |  " << cell[6] << "  |<  " << std::endl;
     std::cout << "\t\t <|_____|_____|_____|>  " << std::endl;
     std::cout << "\t\t >|     |     |     |<  " << std::endl;
-
-    std::cout << "\t\t " << "<|  " << square[7] << "  |  " << square[8] << "  |  " << square[9] << "  |>  " << std::endl;
-
+    std::cout << "\t\t " << "<|  " << cell[7] << "  |  " << cell[8] << "  |  " << cell[9] << "  |>  " << std::endl;
     std::cout << "\t\t >|_____|_____|_____|<  " << std::endl << std::endl;
     system("color F0");
 }
@@ -33,55 +28,53 @@ void board()
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    int player = 1, i, choice;
-
-    char mark;
+    int player = 1, i, pick;
+    char point;
     do
     {
         board();
         player = (player % 2) ? 1 : 2;
 
         std::cout << "\tИгрок №" << player << ", ваш ход, укажите номер клетки:  ";
-        std::cin >> choice;
+        std::cin >> pick;
 
-        mark = (player == 1) ? 'X' : 'O';
+        point = (player == 1) ? 'X' : 'O';
 
-        if (choice == 1 && square[1] == '1')
+        if (pick == 1 && cell[1] == '1')
+            cell[1] = point;
 
-            square[1] = mark;
-        else if (choice == 2 && square[2] == '2')
+        else if (pick == 2 && cell[2] == '2')
+            cell[2] = point;
 
-            square[2] = mark;
-        else if (choice == 3 && square[3] == '3')
+        else if (pick == 3 && cell[3] == '3')
+            cell[3] = point;
 
-            square[3] = mark;
-        else if (choice == 4 && square[4] == '4')
+        else if (pick == 4 && cell[4] == '4')
+            cell[4] = point;
 
-            square[4] = mark;
-        else if (choice == 5 && square[5] == '5')
+        else if (pick == 5 && cell[5] == '5')
+            cell[5] = point;
 
-            square[5] = mark;
-        else if (choice == 6 && square[6] == '6')
+        else if (pick == 6 && cell[6] == '6')
+            cell[6] = point;
 
-            square[6] = mark;
-        else if (choice == 7 && square[7] == '7')
+        else if (pick == 7 && cell[7] == '7')
+            cell[7] = point;
 
-            square[7] = mark;
-        else if (choice == 8 && square[8] == '8')
+        else if (pick == 8 && cell[8] == '8')
+            cell[8] = point;
 
-            square[8] = mark;
-        else if (choice == 9 && square[9] == '9')
+        else if (pick == 9 && cell[9] == '9')
+            cell[9] = point;
 
-            square[9] = mark;
         else
         {
             std::cout << "Такой клетки в игре не существует! ";
-
             player--;
             std::cin.ignore();
             std::cin.get();
         }
-        i = checkwin();
+        i = check();
 
         player++;
     } 
@@ -98,35 +91,35 @@ int main()
     return 0;
 }
 
-int checkwin()
+int check()
 {
-    if (square[1] == square[2] && square[2] == square[3])
-   
+    if (cell[1] == cell[2] && cell[2] == cell[3])
         return 1;
-    else if (square[4] == square[5] && square[5] == square[6])
 
+    else if (cell[4] == cell[5] && cell[5] == cell[6])
         return 1;
-    else if (square[7] == square[8] && square[8] == square[9])
 
+    else if (cell[7] == cell[8] && cell[8] == cell[9])
         return 1;
-    else if (square[1] == square[4] && square[4] == square[7])
 
+    else if (cell[1] == cell[4] && cell[4] == cell[7])
         return 1;
-    else if (square[2] == square[5] && square[5] == square[8])
 
+    else if (cell[2] == cell[5] && cell[5] == cell[8])
         return 1;
-    else if (square[3] == square[6] && square[6] == square[9])
 
+    else if (cell[3] == cell[6] && cell[6] == cell[9])
         return 1;
-    else if (square[1] == square[5] && square[5] == square[9])
 
+    else if (cell[1] == cell[5] && cell[5] == cell[9])
         return 1;
-    else if (square[3] == square[5] && square[5] == square[7])
 
+    else if (cell[3] == cell[5] && cell[5] == cell[7])
         return 1;
-    else if (square[1] != '1' && square[2] != '2' && square[3] != '3'
-        && square[4] != '4' && square[5] != '5' && square[6] != '6'
-        && square[7] != '7' && square[8] != '8' && square[9] != '9')
+
+    else if (cell[1] != '1' && cell[2] != '2' && cell[3] != '3'
+        && cell[4] != '4' && cell[5] != '5' && cell[6] != '6'
+        && cell[7] != '7' && cell[8] != '8' && cell[9] != '9')
 
         return 0;
     else
