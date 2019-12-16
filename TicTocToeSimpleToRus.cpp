@@ -87,14 +87,13 @@ int main()
 		i = check();
 
 		player++;
-	} while (i == -1);
+	} 
+	while (i == -1);
 	board();
 	if (i == 1)
-
 		std::cout << "\t==>\aИгрок №" << --player << " победил! ";
 	else
 		std::cout << "\t==>\aНичья!";
-
 	std::cin.ignore();
 	std::cin.get();
 	return 0;
