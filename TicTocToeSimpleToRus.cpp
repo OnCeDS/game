@@ -34,7 +34,6 @@ void board()
 	system("color 0E");
 
 }
-
 int main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -98,7 +97,6 @@ int main()
 	std::cin.get();
 	return 0;
 }
-
 int check()
 {
 	if (cell[1] == cell[2] && cell[2] == cell[3])
